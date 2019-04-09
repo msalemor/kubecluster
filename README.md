@@ -122,7 +122,7 @@ su - ${USER}
 Install the latest version of the kubernetes files from the google repositories:
 
 ```
-# Install the kubernetes signing kys
+# Install the kubernetes signing keys
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 
 # Add the repository
@@ -131,3 +131,54 @@ sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 # Install kubeadm, kubectl and kubelet
 sudo apt install kubeadm
 ```
+
+### Start kubernetes on the master node
+
+Run:
+```
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
+```
+
+The output of these command provides instructions to get the credentials to log into the cluster and the keys to add other nodes. Make sure to backup the keys to connect other nodes.
+
+To start using your cluster, you need to run the following as a regular user:
+
+```
+mkdir -p $HOME/.kube
+sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
+sudo chown $(id -u):$(id -g) $HOME/.kube/config
+```
+
+### Join knode1 to the cluster
+
+You can now join knode1 (and other machines) by running the following command:
+
+```
+# You should have gotther the actual token when you ran kubeadm init on the step above
+sudo kubeadm join 10.0.2.100:6443 --token 06tl4c.oqn35jzecidg0r0m --discovery-token-ca-cert-hash sha256:c40f5fa0aba6ba311efcdb0e8cb637ae0eb8ce27b7a03d47be6d966142f2204c
+```
+
+### Deploy a Pod Network
+
+Deploy a Pod Network through the master node. A pod network is a medium of communication between the nodes of a network. In this tutorial, we are deploying a Flannel pod network on our cluster through the following command:
+
+```
+# Deploy flannel
+$ sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+```
+
+### Check Kubernetes
+
+Kubernetes install many of the requiresed services on the **kube-system** namespace. Use the following command in order to view the status of the network:
+
+```
+# Check the nodes
+$ kubectl get pods --all-namespaces
+
+# Check the pods
+$ kubectl get nodes --all-namespaces
+
+# Check all
+$ kubectl get all --all-namespaces
+```
+
