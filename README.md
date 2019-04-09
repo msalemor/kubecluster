@@ -117,7 +117,7 @@ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubun
 sudo apt update
 
 # Install docker
-sudo apt install docker-ce
+sudo apt install docker-ce -y
 
 # Verify docker
 sudo systemctl status docker
@@ -127,6 +127,9 @@ sudo usermod -aG docker ${USER}
 
 # Logout and apply new user to the group
 su - ${USER}
+
+# Verify docker
+docker run --rm hello-world
 ```
 
 ## Install Kubeadnm, kubectl and kubelet
@@ -141,7 +144,7 @@ curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
 
 # Install kubeadm, kubectl and kubelet (these command will install all three)
-sudo apt install kubeadm
+sudo apt install kubeadm -y
 ```
 
 ## Start kubernetes on the master node
