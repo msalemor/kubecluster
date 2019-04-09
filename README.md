@@ -86,7 +86,9 @@ In kmaster and knode, turn off the swap file
 
 ```
 sudo swapoff -a
-sudo nano /etc/fstab and comment out the line that has swap and save the file.
+
+# Edit the fstab file, comment out the line that has swap partition, and save the file.
+sudo nano /etc/fstab 
 ```
 
 ### Reboot the machines
