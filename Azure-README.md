@@ -1,4 +1,4 @@
-# Ubuntu 18.04 Kubernetes Cluster
+# Ubuntu 18.04 Kubernetes Cluster in Azure
 
 This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmaster) and a node (knode1). You can easily add more nodes following these instructions.
 
@@ -11,7 +11,9 @@ This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmas
 
 On Kmaster and knode1:
 
-1. Setup Ubuntu
+1. Create a resouce group
+2. Create a VNet
+2. Deploy kmaster and knode Ubuntu VMs VNet and set the IPs to static
 2. Install Docker
 3. Install Kubernetes
 
