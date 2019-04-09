@@ -189,7 +189,7 @@ $ kubectl get pods --all-namespaces
 $ kubectl get all --all-namespaces
 ```
 
-All pods should be on status Running.
+All pods should be Running status.
 
 ## Installing Helm
 
