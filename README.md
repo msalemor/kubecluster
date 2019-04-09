@@ -7,6 +7,26 @@ A a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmaster) a
 - Lastest Docker CE
 - Latest Kubernetes (kubectl, kubelet and kubeadm)
 
+## Installation Steps
+
+On Kmaster and knode:
+
+1. Install Ubuntu
+2. Update Ubuntu
+3. Install Docker
+4. Install Kubernetes
+
+On kmaster:
+
+1. Initialize the cluster using: kubeadm init
+2. Initlialize the POD network
+
+On knode1 (and any other nodes):
+
+1. Join the nodes to the cluster using: kubeadm join
+
+**Note:** specific steps to follow
+
 ## Ubuntu Installation on kmaster and knode1 
 
 ### Install, Update and Upgrade Ubuntu
