@@ -53,12 +53,12 @@ knode 1
 sudo hostnamectl set-hostname knode1
 ```
 
-### Update the hosts file
+### Update the HOSTS file
 
 Update the hosts file so tha tht kmaster and knode1 can know about each other:
 
 ```
-sudo nano /etc/hostnames
+sudo nano /etc/hosts
 ```
 
 And add the following entries:
