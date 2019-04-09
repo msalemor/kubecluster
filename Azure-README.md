@@ -13,7 +13,9 @@ On Kmaster and knode1:
 
 1. Create a resouce group (k8scluster-rg) in your preferred location
 2. Create a VNet (I used 192.168.0.0/20, and the default subnet 192.168.0.0/24)
-2. Deploy kmaster (with open SSH) and knode Ubuntu 18.04 LTS VMs in the the default subnet and set the IPs to static
+2. Deploy two Ubuntu 18.04 VMs to the default subnet and static IP.
+- kmaster (with open SSH)
+- knode1 
 2. Install Docker
 3. Install Kubernetes
 
@@ -40,7 +42,7 @@ sudo apt update && sudo apt upgrade -y
 
 ### Setup a static IP
 
-Go to the IP Configuration on the Azure blade for the resource group, and set the IPs to static:
+Go to the IP Configuration on the Azure blade for the resource group, and set the IPs for each of the VMs to static:
 
 For kmaster, I used:
 ```
@@ -54,7 +56,7 @@ IP 192.168.0.5
 
 ### Update the HOSTS file
 
-Update the hosts file so tha tht kmaster and knode1 can discover each other:
+Update the hosts file so tha kmaster and knode1 can discover each other:
 
 ```
 sudo nano /etc/hosts
@@ -78,7 +80,7 @@ knode1 192.168.0.5
 
 ### Reboot the kmaster and knode1
 
-Run
+Reboot kmaster and knode1
 
 ```
 sudo reboot
@@ -165,7 +167,7 @@ sudo kubeadm join 192.168.0.4:6443 --token <REPLACE HERE> --discovery-token-ca-c
 
 ## Deploy a Pod Network on master node
 
-Deploy a Pod Network through the master node (kmaster). A pod network is a medium of communication between the nodes of a network. In this tutorial, we are deploying a Flannel pod network on our cluster through the following command:
+Deploy a Pod Network through the master node (kmaster). A pod network is a medium of communication between the nodes of a network. I'm using flannel, but there are others.
 
 ```
 # Deploy flannel
