@@ -219,6 +219,20 @@ $ kubectl get all --all-namespaces
 
 All pods should be on status Running.
 
+## Installing Helm
+
+```
+# Download helm
+mkdir Downloads && cd Downloads
+wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz
+
+# Move it to a bin directo
+sudo mv linux-amd64/helm /usr/local/bin/helm
+
+# Initialize helm
+helm init
+```
+
 #### References:
 
 Deploy Kubernetes on Ubuntu
