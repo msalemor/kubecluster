@@ -56,7 +56,7 @@ IP 192.168.0.5
 
 ### Update the HOSTS file
 
-Update the hosts file so tha kmaster and knode1 can discover each other:
+Update the hosts file so tha kmaster and knode1 can discover each other. SSH into kmaster and update the hosts file. SSH into knode1 from kmaster and do the same.
 
 ```
 sudo nano /etc/hosts
@@ -80,7 +80,7 @@ knode1 192.168.0.5
 
 ### Reboot the kmaster and knode1
 
-Reboot kmaster and knode1
+Reboot knode1 and kmaster. SSH into knode1 from kmaster first and execute the command. From kmaster execute the same command.
 
 ```
 sudo reboot
