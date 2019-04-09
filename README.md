@@ -1,6 +1,6 @@
-# kubecluster
+# Ubuntu 18.04 Kubernetes Cluster
 
-A a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmaster) and a node (knode1). You can easily add more nodes following these instructions.
+This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmaster) and a node (knode1). You can easily add more nodes following these instructions.
 
 ## Requirements
 - Ubuntu 18.04
