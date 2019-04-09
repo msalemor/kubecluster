@@ -11,7 +11,7 @@ A a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmaster) a
 
 ### Install, Update and Upgrade Ubuntu
 
-Install Ubuntu 18.04. In downloaded Ubuntu 18.04 desktop and installed it on VirtualBox using a NAT Network network (10.0.2.0/24).
+Install Ubuntu 18.04. In downloaded Ubuntu 18.04 desktop and installed it on VirtualBox using a NAT network (10.0.2.0/24).
 
 After installing Ubuntu, update and upgrade the packages by running:
 
