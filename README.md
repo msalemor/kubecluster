@@ -6,6 +6,7 @@ This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmas
 - Ubuntu 18.04
 - Lastest Docker CE
 - Latest Kubernetes (kubectl, kubelet and kubeadm)
+- In my case, I used VirtualBox
 
 ## Installation Steps
 
@@ -40,7 +41,7 @@ sudo apt update && sudo apt upgrade -y
 
 ### Setup a static IP
 
-For kmaster and knode, setup a static ip (I used the graphical user interface):
+For kmaster and knode1, setup a static ip (I used the graphical user interface):
 
 For kmaster, I used:
 ```
@@ -67,14 +68,14 @@ kmaster
 sudo hostnamectl set-hostname kmaster
 ```
 
-knode 1
+knode1
 ```
 sudo hostnamectl set-hostname knode1
 ```
 
 ### Update the HOSTS file
 
-Update the hosts file so tha tht kmaster and knode1 can know about each other:
+Update the hosts file so tha tht kmaster and knode1 so that they can discover each other:
 
 ```
 sudo nano /etc/hosts
@@ -85,7 +86,6 @@ And add the following entries:
 For kmaster:
 ```
 localhost 127.0.0.1
-kmaster 127.0.0.1
 kmaster 10.0.2.100
 knode1 10.0.2.101
 ```
@@ -93,7 +93,6 @@ knode1 10.0.2.101
 For knode1:
 ```
 localhost 127.0.0.1
-knode1 127.0.0.1
 kmaster 10.0.2.100
 knode1 10.0.2.101
 ```
@@ -107,12 +106,13 @@ In kmaster and knode, turn off the swap file
 sudo swapoff -a
 
 # Edit the fstab file, comment out the line that has swap partition, and save the file.
+# It is possible that you install Ubuntu without a swap file, so you can skip this step
 sudo nano /etc/fstab 
 ```
 
 ### Reboot the machines
 
-Run
+Reboot kmaster and knode1:
 
 ```
 sudo reboot
@@ -120,7 +120,7 @@ sudo reboot
 
 ## Install Docker
 
-Install the latest version of docker:
+Install the latest version of docker in kmaster and knode1:
 
 ```
 # Get required packages
@@ -153,7 +153,7 @@ docker run --rm hello-world
 
 ## Install Kubeadnm, kubectl and kubelet
 
-Install the latest version of the kubernetes files from the google repositories:
+Install the latest version of the kubernetes files from the google repositories in kmaster and knode1:
 
 ```
 # Install the kubernetes signing keys
@@ -190,12 +190,12 @@ You can now join knode1 (and other nodes) by running the following command:
 
 ```
 # You should have gotther the actual token when you ran kubeadm init on the step above
-sudo kubeadm join 10.0.2.100:6443 --token 06tl4c.oqn35jzecidg0r0m --discovery-token-ca-cert-hash sha256:c40f5fa0aba6ba311efcdb0e8cb637ae0eb8ce27b7a03d47be6d966142f2204c
+sudo kubeadm join 10.0.2.100:6443 --token <REPLACE HERE> --discovery-token-ca-cert-hash sha256:<REPLACE HERE>
 ```
 
 ## Deploy a Pod Network
 
-Deploy a Pod Network through the master node. A pod network is a medium of communication between the nodes of a network. In this tutorial, we are deploying a Flannel pod network on our cluster through the following command:
+Deploy a Pod Network through the master node (kmaster) running the command below. A pod network is a medium of communication between the nodes of a network. I am using Flannel but there are other:
 
 ```
 # Deploy flannel
