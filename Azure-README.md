@@ -14,7 +14,7 @@ On Kmaster and knode1:
 1. Create a resouce group (k8scluster-rg) in your preferred location
 2. Create a VNet (I used 192.168.0.0/20, and the default subnet 192.168.0.0/24)
 2. Deploy two Ubuntu 18.04 VMs to the default subnet and static IP.
-- kmaster (with open SSH)
+- kmaster (public IP with open SSH)
 - knode1 
 2. Install Docker
 3. Install Kubernetes
@@ -88,7 +88,7 @@ sudo reboot
 
 ## Install Docker
 
-Install the latest version of docker in kmaster and knode1:
+To install Docker, SSH into kmaster and run the following commands. Also, SSH into knode1 from kmaster and execute the same commands.
 
 ```
 # Get required packages
@@ -121,7 +121,7 @@ docker run --rm hello-world
 
 ## Install Kubeadnm, kubectl and kubelet
 
-Install the latest version of the kubernetes files from the google repositories in kmaster and knode1:
+To install Kubernetes, SSH into kmaster and run the following commands. Also, SSH into knode1 from kmaster and execute the same commands.
 
 ```
 # Install the kubernetes signing keys
@@ -136,7 +136,7 @@ sudo apt install kubeadm -y
 
 ## Start kubernetes on the master node
 
-To start the kubernetes cluster on the master node (kmaster), run the following command:
+To start the kubernetes cluster on the master node (kmaster), SSH into kmaster and run the following command:
 
 ```
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
@@ -156,9 +156,9 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 ## Join knode1 to the cluster
 
-SSH into knode1 from kmaster, You can now join knode1 (and other nodes) by running the following command:
+To join knode1 to the cluster, SSH into knode1 from kmaster, and execute the following command:
 
-**Note:** The command below is part of the output of the init command
+**Note:** The command below is part of the output of the init command above where you can obtain the toekn and key
 
 ```
 # You should have gotten the actual token when you ran kubeadm init on the step above
