@@ -152,7 +152,7 @@ To start the kubernetes cluster on the master node (kmaster), run the following 
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
-**Important:** The output of these command provides instructions to get the credentials to log into the cluster and the keys to add other nodes. Make sure to backup the keys to connect other nodes.
+**Important:** The output of this command provides instructions to get the credentials to log into the cluster and the keys to add other nodes. Make sure to backup the keys to be able to connect other nodes.
 
 To start using your cluster, you need to run the following as a regular user:
 
