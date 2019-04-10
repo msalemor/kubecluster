@@ -226,7 +226,7 @@ All pods should be on status Running.
 mkdir Downloads && cd Downloads
 wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz
 
-# Move it to a bin directory
+# Move helm it to a bin directory in the PATH
 sudo mv linux-amd64/helm /usr/local/bin/helm
 
 # Create the tiller service account
@@ -240,14 +240,9 @@ helm init --service-account tiller --upgrade
 
 #### References:
 
-Deploy Kubernetes on Ubuntu
-
-https://vitux.com/install-and-deploy-kubernetes-on-ubuntu/
-
-How to install docker on ubuntu
-
-https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
-
-Installing Helm:
-
-https://helm.sh/docs/using_helm/#installing-helm
+- Deploy Kubernetes on Ubuntu
+  - https://vitux.com/install-and-deploy-kubernetes-on-ubuntu/
+- How to install docker on ubuntu
+  - https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-18-04
+- Installing Helm:
+  - https://helm.sh/docs/using_helm/#installing-helm
