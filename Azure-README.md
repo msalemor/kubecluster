@@ -7,8 +7,8 @@ This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmas
 - Lastest Docker CE
 - Latest Kubernetes (kubectl, kubelet and kubeadm)
 - Familiarity executing sudo commands in Ubuntu
-- Familiarity with editing files using nano, vim, etc.
-- Familiarity creating resources in Azure
+- Familiarity wediting files using command line editors such as nano, vim, etc.
+- Familiarity creating resources in Azure; particularly VNets, subnets and Ubuntu VMs
 - Familiarity connecting to VMs in Azure over SSH
 
 ## Installation Steps
@@ -16,12 +16,12 @@ This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmas
 On Kmaster and knode1:
 
 1. Create a resouce group (k8scluster-rg) in your preferred location
-2. Create a VNet (I used 192.168.0.0/20, and the default subnet 192.168.0.0/24)
-2. Deploy two Ubuntu 18.04 VMs to the default subnet and static IP.
+2. Create a VNet (i.e. 192.168.0.0/20, and the default subnet (i.e. 192.168.0.0/24)
+3. Deploy two Ubuntu 18.04 VMs to the default subnet having static IPs.
 - kmaster (public IP with open SSH)
 - knode1 
-2. Install Docker
-3. Install Kubernetes
+4. Install Docker
+5. Install Kubernetes
 
 On kmaster:
 
