@@ -25,7 +25,7 @@ On knode1 (and any other nodes):
 
 1. Join the nodes to the cluster using: kubeadm join
 
-**Note:** specific steps to follow.
+**Note:** detailed installation steps to follow.
 
 ## Ubuntu Installation on kmaster and knode1 
 
@@ -226,7 +226,7 @@ All pods should be on status Running.
 mkdir Downloads && cd Downloads
 wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz
 
-# Move helm it to a bin directory in the PATH
+# Move helm to a bin directory in the PATH
 sudo mv linux-amd64/helm /usr/local/bin/helm
 
 # Create the tiller service account
