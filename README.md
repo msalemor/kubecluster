@@ -77,7 +77,7 @@ sudo hostnamectl set-hostname knode1
 
 Update the hosts file so tha tht kmaster and knode1 so that they can discover each other:
 
-```
+```bash
 sudo nano /etc/hosts
 ```
 
@@ -102,7 +102,7 @@ knode1 10.0.2.101
 
 In kmaster and knode, turn off the swap file
 
-```
+```bash
 sudo swapoff -a
 
 # Edit the fstab file, comment out the line that has swap partition, and save the file.
@@ -114,7 +114,7 @@ sudo nano /etc/fstab
 
 Reboot kmaster and knode1:
 
-```
+```bash
 sudo reboot
 ```
 
@@ -122,7 +122,7 @@ sudo reboot
 
 Install the latest version of docker in kmaster and knode1:
 
-```
+```bash
 # Get required packages
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
@@ -155,7 +155,7 @@ docker run --rm hello-world
 
 Install the latest version of the kubernetes files from the google repositories in kmaster and knode1:
 
-```
+```bash
 # Install the kubernetes signing keys
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 
@@ -178,7 +178,7 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 To start using your cluster, you need to run the following as a regular user:
 
-```
+```bash
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -188,7 +188,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 You can now join knode1 (and other nodes) by running the following command:
 
-```
+```bash
 # You should have gotther the actual token when you ran kubeadm init on the step above
 sudo kubeadm join 10.0.2.100:6443 --token <REPLACE HERE> --discovery-token-ca-cert-hash sha256:<REPLACE HERE>
 ```
@@ -197,7 +197,7 @@ sudo kubeadm join 10.0.2.100:6443 --token <REPLACE HERE> --discovery-token-ca-ce
 
 Deploy a Pod Network through the master node (kmaster) running the command below. A pod network is a medium of communication between the nodes of a network. I am using Flannel but there are other:
 
-```
+```bash
 # Deploy flannel
 $ sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
@@ -206,7 +206,7 @@ $ sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/
 
 Kubernetes install many of the requiresed services on the **kube-system** namespace. Use the following command in order to view the status of the network:
 
-```
+```bash
 # Check the pods
 $ kubectl get nodes --all-namespaces
 
@@ -221,7 +221,7 @@ All pods should be on status Running.
 
 ## Installing Helm
 
-```
+```bash
 # Download helm
 mkdir Downloads && cd Downloads
 wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz
