@@ -6,6 +6,10 @@ This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmas
 - Ubuntu 18.04
 - Lastest Docker CE
 - Latest Kubernetes (kubectl, kubelet and kubeadm)
+- Familiarity executing sudo commands in Ubuntu
+- Familiarity with editing files using nano, vim, etc.
+- Familiarity creating resources in Azure
+- Familiarity connecting to VMs in Azure over SSH
 
 ## Installation Steps
 
