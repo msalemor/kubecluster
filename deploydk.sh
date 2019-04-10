@@ -32,3 +32,12 @@ sudo docker run --rm hello-world
 
 # Echo remember to reboot or logout
 echo To logout execute: su - ${USER}
+
+# Install the kubernetes signing keys
+curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
+
+# Add the repository
+sudo apt-add-repository "deb http://apt.kubernetes.io/ kubernetes-xenial main"
+
+# Initialize the kubernetes
+sudo kubeadm init --pod-network-cidr=10.244.0.0/16
