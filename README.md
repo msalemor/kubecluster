@@ -1,4 +1,4 @@
-# Ubuntu 18.04 Kubernetes Cluster
+# Ubuntu 18.04 Kubernetes Cluster with Helm
 
 This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmaster) and a node (knode1). You can easily add more nodes following these instructions.
 
