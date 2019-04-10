@@ -202,7 +202,7 @@ All pods should be Running status.
 mkdir Downloads && cd Downloads
 wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz
 
-# Move it to a bin directory
+# Move helm to a bin directory in the PATH
 sudo mv linux-amd64/helm /usr/local/bin/helm
 
 # Create the tiller service account
