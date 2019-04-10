@@ -1,4 +1,4 @@
-# Ubuntu 18.04 Kubernetes Cluster in Azure
+# Ubuntu 18.04 Kubernetes Cluster in Azure with Helm
 
 This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmaster) and a node (knode1). You can easily add more nodes following these instructions.
 
@@ -96,7 +96,7 @@ To install Docker, SSH into kmaster and run the following commands. Also, SSH in
 
 ```bash
 # Get required packages
-sudo apt install apt-transport-https ca-certificates curl software-properties-common
+sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
 
 # Add the key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
