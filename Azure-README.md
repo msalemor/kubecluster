@@ -40,7 +40,7 @@ On knode1 (and any other nodes):
 
 After the kmaster and knode1 VMs are provisioned, SSH into kmaster and update the packages. Do the same for knode1 by SSH from kmaster:
 
-```
+```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
@@ -62,7 +62,7 @@ IP 192.168.0.5
 
 Update the hosts file so tha kmaster and knode1 can discover each other. SSH into kmaster and update the hosts file. SSH into knode1 from kmaster and do the same.
 
-```
+```bash
 sudo nano /etc/hosts
 ```
 
@@ -86,7 +86,7 @@ knode1 192.168.0.5
 
 Reboot knode1 and kmaster. SSH into knode1 from kmaster first and execute the command. From kmaster execute the same command.
 
-```
+```bash
 sudo reboot
 ```
 
@@ -94,7 +94,7 @@ sudo reboot
 
 To install Docker, SSH into kmaster and run the following commands. Also, SSH into knode1 from kmaster and execute the same commands.
 
-```
+```bash
 # Get required packages
 sudo apt install apt-transport-https ca-certificates curl software-properties-common
 
@@ -127,7 +127,7 @@ docker run --rm hello-world
 
 To install Kubernetes, SSH into kmaster and run the following commands. Also, SSH into knode1 from kmaster and execute the same commands.
 
-```
+```bash
 # Install the kubernetes signing keys
 curl -s https://packages.cloud.google.com/apt/doc/apt-key.gpg | sudo apt-key add
 
@@ -142,7 +142,7 @@ sudo apt install kubeadm -y
 
 To start the kubernetes cluster on the master node (kmaster), SSH into kmaster and run the following command:
 
-```
+```bash
 sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 ```
 
@@ -152,7 +152,7 @@ sudo kubeadm init --pod-network-cidr=10.244.0.0/16
 
 To start using your cluster, you need to run the following commands as a regular user after the command above has run (you will see these lines listed as part of the output):
 
-```
+```bash
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
@@ -164,7 +164,7 @@ To join knode1 to the cluster, SSH into knode1 from kmaster, and execute the fol
 
 **Note:** The command below is part of the output of the init command above where you can obtain the toekn and key
 
-```
+```bash
 # You should have gotten the actual token when you ran kubeadm init on the step above
 sudo kubeadm join 192.168.0.4:6443 --token <REPLACE HERE> --discovery-token-ca-cert-hash sha256:<REPLACE HERE>
 ```
@@ -173,7 +173,7 @@ sudo kubeadm join 192.168.0.4:6443 --token <REPLACE HERE> --discovery-token-ca-c
 
 Deploy a Pod Network through the master node (kmaster). A pod network is a medium of communication between the nodes of a network. I'm using flannel, but there are others.
 
-```
+```bash
 # Deploy flannel
 $ sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
 ```
@@ -182,7 +182,7 @@ $ sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/
 
 Kubernetes install many of the requiresed services on the **kube-system** namespace. Use the following command in order to view the status of the network:
 
-```
+```bash
 # Check the pods
 $ kubectl get nodes --all-namespaces
 
@@ -197,7 +197,7 @@ All pods should be Running status.
 
 ## Installing Helm
 
-```
+```bash
 # Download helm
 mkdir Downloads && cd Downloads
 wget https://storage.googleapis.com/kubernetes-helm/helm-v2.13.1-linux-amd64.tar.gz
