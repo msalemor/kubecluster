@@ -35,7 +35,7 @@ Install Ubuntu 18.04. In downloaded Ubuntu 18.04 desktop and installed it on Vir
 
 After installing Ubuntu, update and upgrade the packages by running:
 
-```
+```bash
 sudo apt update && sudo apt upgrade -y
 ```
 
@@ -44,7 +44,7 @@ sudo apt update && sudo apt upgrade -y
 For kmaster and knode1, setup a static ip (I used the graphical user interface):
 
 For kmaster, I used:
-```
+```text
 IP 10.0.2.100
 netmask 255.255.255.0
 gateway 10.0.2.1
@@ -64,12 +64,12 @@ dns-nameserver 8.8.8.8
 In my case, I had to update the hostnames because I had clonned the machines, so I changed the host names.
 
 kmaster
-```
+```bash
 sudo hostnamectl set-hostname kmaster
 ```
 
 knode1
-```
+```bash
 sudo hostnamectl set-hostname knode1
 ```
 
