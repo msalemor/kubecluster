@@ -189,7 +189,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 You can now join knode1 (and other nodes) by running the following command:
 
 ```bash
-# You should have gotther the actual token when you ran kubeadm init on the step above
+# Replace the token and cert which you should have gotten on the step above
 sudo kubeadm join 10.0.2.100:6443 --token <REPLACE HERE> --discovery-token-ca-cert-hash sha256:<REPLACE HERE>
 ```
 
@@ -217,7 +217,7 @@ $ kubectl get pods --all-namespaces
 $ kubectl get all --all-namespaces
 ```
 
-All pods should be on status Running.
+> **Note:** All pods in the kube-system namespace should have a status of Running.
 
 ## Installing Helm
 
