@@ -1,13 +1,14 @@
-# Ubuntu 18.04 Kubernetes Cluster in Azure with Helm
+# Install a kubernetes cluster with Helm on Ubuntu 18.04 VMs in Azure
 
 This ia a guide to create a kubernetes cluster on Ubuntu 18.04 on a master (kmaster) and a node (knode1). You can easily add more nodes following these instructions.
 
 ## Requirements
+
 - Ubuntu 18.04
 - Lastest Docker CE
 - Latest Kubernetes (kubectl, kubelet and kubeadm)
 - Familiarity executing sudo commands in Ubuntu
-- Familiarity wediting files using command line editors such as nano, vim, etc.
+- Familiarity editing files using command line editors such as nano, vim, etc.
 - Familiarity creating resources in Azure; particularly VNets, subnets and Ubuntu VMs
 - Familiarity connecting to VMs in Azure over SSH
 
@@ -32,7 +33,7 @@ On knode1 (and any other nodes):
 
 1. Join the nodes to the cluster using: kubeadm join
 
-**Note:** detailed installation steps to follow.
+> **Note:** detailed installation steps to follow.
 
 ## Ubuntu Installation on kmaster and knode1 
 
@@ -162,7 +163,7 @@ sudo chown $(id -u):$(id -g) $HOME/.kube/config
 
 To join knode1 to the cluster, SSH into knode1 from kmaster, and execute the following command:
 
-**Note:** The command below is part of the output of the init command above where you can obtain the toekn and key
+> **Important:** The command below is part of the output of the init command above where you can obtain the toekn and cert
 
 ```bash
 # You should have gotten the actual token when you ran kubeadm init on the step above
@@ -193,7 +194,7 @@ $ kubectl get pods --all-namespaces
 $ kubectl get all --all-namespaces
 ```
 
-All pods should be Running status.
+> **Note:** All pods should be on Running status.
 
 ## Installing Helm
 
