@@ -25,7 +25,7 @@ On knode1 (and any other nodes):
 
 1. Join the nodes to the cluster using: kubeadm join
 
-**Note:** detailed installation steps to follow.
+> **Note:** detailed installation steps to follow.
 
 ## Ubuntu Installation on kmaster and knode1 
 
