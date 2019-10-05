@@ -122,6 +122,15 @@ sudo reboot
 
 Install the latest version of docker in kmaster and knode1:
 
+### Install Docker the short way
+
+```bash
+curl -fsSL https://get.docker.com -o get-docker.sh
+sh get-docker.sh
+```
+
+### Install Docker the long way
+
 ```bash
 # Get required packages
 sudo apt install apt-transport-https ca-certificates curl software-properties-common -y
@@ -137,17 +146,28 @@ sudo apt update
 
 # Install docker
 sudo apt install docker-ce -y
+```
 
-# Verify docker
+## Verify docker
+
+```
 sudo systemctl status docker
+```
 
-# Add the current user to the user group so that you don't have to type sudo in front of the docker command
+## Add the current user to the user group so that you don't have to type sudo in front of the docker command
+
+```
 sudo usermod -aG docker ${USER}
+```
 
-# Logout and apply new user to the group
+## Logout and apply new user to the group
+
+```
 su - ${USER}
+```
 
-# Verify docker
+## Verify docker
+```
 docker run --rm hello-world
 ```
 
